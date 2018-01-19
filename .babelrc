@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "react"
+  ],
+  "ignore": [
+    "**/*.test.js",
+    "test.js"
+  ]
+}

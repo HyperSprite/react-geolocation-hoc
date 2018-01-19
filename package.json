@@ -1,0 +1,55 @@
+{
+  "name": "@hypersprite/react-geolocation-hoc",
+  "version": "1.0.0",
+  "description": "Geolocation HOC",
+  "main": "dst/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:src": "jest src/* --watch",
+    "lint": "eslint .",
+    "build": "babel src --out-dir dst",
+    "preversion": "npm run test && npm run lint",
+    "version": "npm run build && git add -A dst",
+    "postversion": "git push && npm publish && rm -rf dst"
+  },
+  "precommit": [
+    "lint",
+    "test"
+  ],
+  "eslintConfig": {
+    "extends": "airbnb",
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "rules": {
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.0.4",
+    "pre-commit": "^1.2.2"
+  },
+  "keywords": [
+    "geolocation",
+    "react",
+    "hoc"
+  ],
+  "author": "C. Dunavan",
+  "repository": "https://github.com/HyperSprite/react-geolocation-hoc",
+  "license": "MIT"
+}
