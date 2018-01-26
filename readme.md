@@ -82,8 +82,7 @@ Testing provided by Jest, Enzyme and coverage report by Istanbul
  * Run linting and tests with pre-commit hooks.
 
 ```bash
-git add .
-git commit -m 'some totally useful comment'
+git commit -am 'some totally useful comment'
 ```
 
 Next, we need to Version:
