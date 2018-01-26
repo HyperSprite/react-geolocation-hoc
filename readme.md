@@ -38,7 +38,7 @@ const MyMap = (props) => {
   */
 };
 
-export default ExtGeolocation()(MyMap);
+export default ExtGeolocation(MyMap);
 ```
 
 
