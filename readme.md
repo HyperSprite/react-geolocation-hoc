@@ -5,13 +5,14 @@ This is a small HOC that injects browser geolocation into the child component.
 ## Usage:
 
 **OPTIONAL: Pass in Props that are passed to the child:**
+
 These can be used if you want to display a particular location if the user chooses not to accept your location request.
 
 * lat: Latitude: Number
 * lng: Longitude: Number
 * noGeolocation: Boolean - True === geolocation disabled, will not ask
 
-**Child receives props**
+**Child receives these props**
 * lat: Latitude: Number - Default latitude if geolocation is not used
 * lng: Longitude: Number - Default latitude if geolocation is not used
 * geolocation: Boolean - True: geolocation allowed by user, False, geolocation blocked by user
@@ -44,12 +45,12 @@ export default ExtGeolocation(MyMap);
 
 ### When you use your component:
 
-#### Uses default lat/lng and ask for permission
+#### Uses default lat/lng and asks for permission and allows for browser geolocation
 ```js
 <MyMap />
 ```
 
-#### Assigns a default lat/lng and allows for browser geolocation
+#### Assigns props as default lat/lng and asks for permission and allows for browser geolocation
 ```js
 <MyMap
   lat={39.28756}
@@ -57,7 +58,7 @@ export default ExtGeolocation(MyMap);
 />
 ```
 
-#### Assigns a lat/lng and disables browser geolocation
+#### Assigns props as default lat/lng and does NOT ask for premission, disables browser geolocation
 ```js
 <MyMap
   lat={39.28756}
