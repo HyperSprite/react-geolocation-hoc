@@ -68,6 +68,7 @@ test('Navigator.geolocation Approved', () => {
     locAcc: 23,
     speed: null,
     timestamp: 1516904839703,
+    locationReady: true,
   });
 });
 
@@ -88,5 +89,6 @@ test('Navigator.geolocation Blocked', () => {
     speed: null,
     timestamp: expect.any(Number),
     noGeolocation: null,
+    locationReady: true,
   });
 });

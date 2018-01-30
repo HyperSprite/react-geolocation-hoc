@@ -23,7 +23,14 @@ const ExtGeolocation = (Component) => {
       this.state = {
         lat: null,
         lng: null,
+        /** geolocation === true if location is geo based, else false */
         geolocation: !this.props.noGeolocation,
+        /**
+        * locationReady it true when ready to pass state and props to
+        * the child component
+        * noGeolocation === true || resolution of getCurrentPosition
+        */
+        locationReady: this.props.noGeolocation,
       };
       this.handleSuccess = this.handleSuccess.bind(this);
       this.handleError = this.handleError.bind(this);
@@ -48,6 +55,7 @@ const ExtGeolocation = (Component) => {
         heading: position.coords.heading,
         speed: position.coords.speed,
         geolocation: true,
+        locationReady: true,
       });
     }
 
@@ -62,11 +70,12 @@ const ExtGeolocation = (Component) => {
         speed: null,
         timestamp: new Date().getTime(),
         geolocation: false,
+        locationReady: true,
       });
     }
 
     render() {
-      return <Component {...this.state} {...this.props} />;
+      return this.state.locationReady && <Component {...this.props} {...this.state} />;
     }
   }
 
