@@ -75,7 +75,7 @@ const ExtGeolocation = (Component) => {
     }
 
     render() {
-      return this.state.locationReady && <Component {...this.props} {...this.state} />;
+      return <Component {...this.props} {...this.state} />;
     }
   }
 
