@@ -1,8 +1,23 @@
 {
+  "author": "C. Dunavan",
   "name": "@hypersprite/react-geolocation-hoc",
-  "version": "1.0.4",
+  "homepage": "https://github.com/HyperSprite/react-geolocation-hoc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyperSprite/react-geolocation-hoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HyperSprite/react-geolocation-hoc/issues"
+  },
+  "keywords": [
+    "geolocation",
+    "react",
+    "hoc"
+  ],
+  "license": "MIT",
   "description": "Geolocation HOC",
   "main": "dst/index.js",
+  "version": "1.0.4",
   "scripts": {
     "test": "jest",
     "test:dev": "jest --watch",
@@ -69,20 +84,5 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  },
-  "keywords": [
-    "geolocation",
-    "react",
-    "hoc"
-  ],
-  "author": "C. Dunavan",
-  "homepage": "https://github.com/HyperSprite/react-geolocation-hoc#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HyperSprite/react-geolocation-hoc.git"
-  },
-  "bugs": {
-    "url": "https://github.com/HyperSprite/react-geolocation-hoc/issues"
-  },
-  "license": "MIT"
+  }
 }

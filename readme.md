@@ -87,6 +87,19 @@ git commit -am 'some totally useful comment'
 ```
 
 Next, we need to Version:
+
+> Note: An initial publish needs a little setup before ```npm version``` will work.
+
+```js
+// manually build your dst
+npm run build
+// publish your module
+// --access public if this is a scoped module and you want it public
+npm publish --access public
+// delete dst folder
+rm -rf dst
+```
+
 * version, which will:
  * Rerun linting and tests
  * Updates the package.json version numnber based on Major, Minor and Patch

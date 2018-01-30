@@ -18,12 +18,18 @@ test('No props passed to HOC, default passed to child', () => {
 });
 
 test('Props passed to HOC passed on to child', () => {
-  const props = { lat: 37.128, lng: -122.256, noGeolocation: true };
+  const props = {
+    lat: 37.128,
+    lng: -122.256,
+    noGeolocation: true,
+    handleClick: () => jest.fn(),
+  };
   const LocDisplayWithGeolocation = ExtGeolocation(LocDisplay);
   const wrapper = shallow(<LocDisplayWithGeolocation
     lat={props.lat}
     lng={props.lng}
     noGeolocation={props.noGeolocation}
+    handleClick={props.handleClick}
   />);
 
   expect(wrapper.instance().props).toEqual(props);
@@ -81,5 +87,6 @@ test('Navigator.geolocation Blocked', () => {
     locAcc: null,
     speed: null,
     timestamp: expect.any(Number),
+    noGeolocation: null,
   });
 });
