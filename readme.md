@@ -17,7 +17,7 @@ These can be used if you want to display a particular location if the user choos
 * lng: Longitude: Number - Default latitude if geolocation is not used
 * geolocation: Boolean - True: geolocation allowed by user, False, geolocation blocked by user
 * timestamp: Unix time in seconds the getCurrentPosition event or optional props passed.
-* refreshLocation: Callback to update the location, sets noGeolocation to true.
+* refreshLocation: Callback to update the location, sets geolocation to true.
 
 ### Install
 ```js
