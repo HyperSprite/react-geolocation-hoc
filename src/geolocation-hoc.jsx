@@ -31,17 +31,34 @@ const ExtGeolocation = (Component) => {
         * noGeolocation === true || resolution of getCurrentPosition
         */
         locationReady: this.props.noGeolocation,
+        /**
+        * Updates geolocation and sets geolocation state to true.
+        */
+        refreshLocation: this.refreshLocation,
       };
+      // this.getGeoLocacton = this.getGeoLocacton.bind(this);
+      this.refreshLocation = this.refreshLocation.bind(this);
       this.handleSuccess = this.handleSuccess.bind(this);
       this.handleError = this.handleError.bind(this);
     }
 
     componentDidMount() {
+      this.getGeoLocacton();
+    }
+
+    getGeoLocacton() {
       if (navigator.geolocation && this.state.geolocation) {
         navigator.geolocation.getCurrentPosition(this.handleSuccess, this.handleError);
       } else {
         this.handleError();
       }
+    }
+
+    refreshLocation() {
+      this.setState({
+        geolocation: true,
+      });
+      this.getGeoLocacton();
     }
 
     handleSuccess(position) {
