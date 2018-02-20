@@ -69,7 +69,6 @@ test('Navigator.geolocation Approved', () => {
     speed: null,
     timestamp: 1516904839703,
     locationReady: true,
-    refreshLocation: expect.anything(), // need to update this with real check
   });
 });
 
@@ -91,27 +90,9 @@ test('Navigator.geolocation Blocked', () => {
     timestamp: expect.any(Number),
     noGeolocation: null,
     locationReady: true,
-    refreshLocation: expect.anything(), // need to update this with real check
+    refreshLocation: expect.any(Function),
   });
 });
-
-// test('refreshLocation - No props passed to HOC', () => {
-//
-//   const LocDisplayWithGeolocation = ExtGeolocation(LocDisplay);
-//   const props = {
-//     lat: 37.40732840164027,
-//     lng: -122.25696518263857,
-//     noGeolocation: null,
-//   };
-//   const wrapper = mount(<LocDisplayWithGeolocation />);
-//   // console.log('geolocation 1', wrapper.state('geolocation'));
-//   wrapper.instance().refreshLocation();
-//   // console.log('geolocation 2', wrapper.state('geolocation'));
-//
-//   const geolocState = wrapper.state('geolocation');
-//   console.log(wrapper.debug());
-//   expect(geolocState).toEqual(true);
-// });
 
 test('refreshLocation - Navigator.geolocation Approved', () => {
   const LocDisplayWithGeolocation = ExtGeolocation(LocDisplay);
@@ -131,7 +112,6 @@ test('refreshLocation - Navigator.geolocation Approved', () => {
     speed: null,
     timestamp: 1516904839703,
     locationReady: true,
-    refreshLocation: expect.anything(), // need to update this with real check
   });
 });
 
