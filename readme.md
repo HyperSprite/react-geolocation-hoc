@@ -2,35 +2,18 @@
 
 This is a small HOC that injects browser geolocation into the child component.
 
-## Usage:
-
-**OPTIONAL: Pass in Props that are passed to the child:**
-
-These can be used if you want to display a particular location if the user chooses not to accept your location request.
-
-* lat: Latitude: Number
-* lng: Longitude: Number
-* noGeolocation: Boolean - True === geolocation disabled, will not ask
-
-**Child receives these props**
-* lat: Latitude: Number - Default latitude if geolocation is not used
-* lng: Longitude: Number - Default latitude if geolocation is not used
-* geolocation: Boolean - True: geolocation allowed by user, False, geolocation blocked by user
-* timestamp: Unix time in seconds the getCurrentPosition event or optional props passed.
-* refreshLocation: Callback to update the location, sets geolocation to true.
+## Usage
 
 ### Install
-```js
-npm install @hypersprite/react-geolocation-hoc --save
-```
-Example assumes child component is named "MyMap", it could be any component name.
+```npm install @hypersprite/react-geolocation-hoc --save```
 
-### Import into child component ```my-map.jsx```
-```js
-/** with your imports */
-import ExtGeolocation from '@hypersprite/react-geolocation-hoc';
-/** local imports etc... */
+### Import
+```import ExtGeolocation from '@hypersprite/react-geolocation-hoc';```
 
+### In Practice
+
+my-map.js user created file imports ExtGeolocation
+```js
 const MyMap = (props) => {
   const { lat, lng, geolocation, timestamp } = props;
   /** ... all your other component code
@@ -43,14 +26,14 @@ const MyMap = (props) => {
 export default ExtGeolocation(MyMap);
 ```
 
-### When you use your component:
+Then from your view file
 
-#### Uses default lat/lng and asks for permission and allows for browser geolocation
+Uses default lat/lng and asks for permission and allows for browser geolocation
 ```js
 <MyMap />
 ```
 
-#### Assigns props as default lat/lng and asks for permission and allows for browser geolocation
+Assigns props as default lat/lng and asks for permission and allows for browser geolocation
 ```js
 <MyMap
   lat={39.28756}
@@ -58,7 +41,7 @@ export default ExtGeolocation(MyMap);
 />
 ```
 
-#### Assigns props as default lat/lng and does NOT ask for premission, disables browser geolocation
+Assigns props as default lat/lng and does NOT ask for premission, disables browser geolocation
 ```js
 <MyMap
   lat={39.28756}
@@ -67,48 +50,36 @@ export default ExtGeolocation(MyMap);
 />
 ```
 
-## Testing
+### Scripts
 
-Testing provided by Jest, Enzyme and coverage report by Istanbul
+use `npm run <script>`
 
-* ```npm test``` Runs all tests.
-* ```npm run test:src``` only runs the tests in src in watch mode.
+* `lint` - runs linter
+* `test` - runs test
+* `test:dev` - runs test in watch mode
+* `build` - runs build
+* `build:dev` - runs build in watch mode
 
-## Add+Commit, Version
+`npm version <major | minor | patch>`
 
-> The branch must be clean to version and publish
+### API
 
-* Add
-* Commit, which will:
- * Run linting and tests with pre-commit hooks.
+#### Receives Props
 
-```bash
-git commit -am 'some totally useful comment'
-```
+| prop name | type | values | description |
+| --------- | ---- | ------ | ----------- |
+| lat | Number | Latitudes | Optional if default needed |
+| lng | Number | Longitude | Optional if default needed |
+| noGeolocation | Boolean | true or false* | true === geolocation is disabled, will not ask |
 
-Next, we need to Version:
+> noGeolocation can be used with a pre-dialog box asking if they want to enable geolocaton, this way they can say no to you and not set disabled in the browser, giving you the opportunity to ask the next time. See this [Google recommendation](https://developers.google.com/web/fundamentals/native-hardware/user-location/#ask_permission_responsibly) for more information.  
 
-> Note: An initial publish needs a little setup before ```npm version``` will work.
+#### New Passed Props
 
-```js
-// manually build your dst
-npm run build
-// publish your module
-// --access public if this is a scoped module and you want it public
-npm publish --access public
-// delete dst folder
-rm -rf dst
-```
-
-* version, which will:
- * Rerun linting and tests
- * Updates the package.json version numnber based on Major, Minor and Patch
- * Git add package.json using the version number as the commit message
- * Push the changes to Github
- * Transpile the JSX to ES5 with babel into the dst/ directory
- * Publish to npm
- * Delete the dst directory
-
-```bash   
-npm version <major | minor | patch>
-```
+| prop name | type | values | description |
+| --------- | ---- | ------ | ----------- |
+| lat | Number | Latitudes | Can pass default props or user location |
+| lng | Number | Longitude | Can pass default props or user location |
+| geolocation | Boolean | true or false* | true: geolocation allowed, false, geolocation blocked |
+| timestamp | Number | Unix time in seconds |   |
+| refreshLocation | function |  |   |

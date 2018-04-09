@@ -22,11 +22,15 @@
     "test": "jest",
     "test:dev": "jest --watch",
     "lint": "eslint src/* .jsx",
-    "build": "babel src --out-dir dst",
+    "build": "rm -rf dst && babel src --out-dir dst --ignore spec.js",
+    "build:dev": "npm run build -- -w",
     "preversion": "npm run test && npm run lint",
     "version": "npm run build",
-    "postversion": "npm publish && rm -rf dst && git push"
+    "postversion": "npm publish && git push"
   },
+  "files": [
+    "dst"
+  ],
   "precommit": [
     "lint",
     "test"
